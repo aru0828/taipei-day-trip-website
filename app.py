@@ -5,7 +5,7 @@ import mysql.connector
 mydb = mysql.connector.connect(
 	host='localhost',
 	username='root',
-	password='122090513',
+	password='As5566&&',
 	database='trip_website'
 )
 
