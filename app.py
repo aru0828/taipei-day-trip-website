@@ -41,16 +41,22 @@ def getAttractions():
 
 	try:
 		#取得資料長度 
-		mycursor.execute("SELECT count(*) FROM attractions")
-		dataLen = mycursor.fetchone()["count(*)"]
-
+		dataLen = 0
+		if(not qsKeyword):
+			mycursor.execute("SELECT count(*) FROM attractions")
+			dataLen = mycursor.fetchone()["count(*)"]
+		else:
+			mycursor.execute(f"SELECT count(*)  FROM attractions WHERE name LIKE '%{qsKeyword}%'")
+			dataLen = mycursor.fetchone()["count(*)"]
+			print(dataLen)
 		#判斷是否有關鍵字查詢 未完成
 		if(qsKeyword):
-			mycursor.execute(f"SELECT *FROM attractions WHERE name LIKE '%{qsKeyword}%'")
+			mycursor.execute(f"SELECT *  FROM attractions WHERE name LIKE '%{qsKeyword}%' limit { int(qsPage)*12 }, 12")
 		elif(not qsKeyword):
-			mycursor.execute(f"SELECT * FROM attractions WHERE id > 12*{int(qsPage)-1} limit 12")
+			mycursor.execute(f"SELECT * FROM attractions  limit { int(qsPage)*12 }, 12")
 
 		result = mycursor.fetchall()
+		
 		responseData={}
 		data = []
 
@@ -75,8 +81,9 @@ def getAttractions():
 					'longitude':attraction["longitude"],
 					'images':imgArray
 			})
+		
 		#依照response格式存放資料並在for迴圈結束後return
-		if((int(qsPage)+1) * 12 > dataLen or qsKeyword):
+		if((int(qsPage)+1) * 12 > dataLen):
 			responseData['nextPage'] = None
 		else:
 			responseData['nextPage'] = int(qsPage)+1
@@ -121,3 +128,4 @@ def getAttraction(attractionId):
 		}), 500
 
 app.run(host="0.0.0.0", port=3000)
+
