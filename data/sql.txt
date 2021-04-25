@@ -1,0 +1,18 @@
+CREATE TABLE attractions(
+	id int PRIMARY KEY,
+	name varchar(255) NOT NULL,
+	category varchar(255) NOT NULL,
+	description longtext  NOT NULL,
+	address  varchar(255) NOT NULL,
+	transport longtext,
+	mrt varchar(255),
+	latitude FLOAT NOT NULL,
+	longitude FLOAT  NOT NULL
+);
+
+CREATE TABLE attractions_img(
+	img_id int PRIMARY KEY AUTO_INCREMENT,
+	img_url varchar(255) NOT NULL,
+	id int NOT NULL,
+	FOREIGN KEY (id) REFERENCES attractions(id)
+)
