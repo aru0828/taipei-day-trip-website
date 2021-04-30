@@ -1,12 +1,15 @@
 @import "variables";
 @import "cssReset";
 @import "layout";
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 *, *::after, *::before {
     box-sizing: border-box;
   }
 
-
+body{
+    font-family: Noto Sans TC;
+    font-style: normal;
+}
 
 .container{
     max-width: 1200px;
