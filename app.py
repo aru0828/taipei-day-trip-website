@@ -1,14 +1,15 @@
-from flask import Flask,request, jsonify
+from flask import Flask,request, jsonify, render_template
 import mysql.connector
 
 
 mydb = mysql.connector.connect(
 	host='localhost',
 	username='root',
-	password='As5566&&',
+	password='122090513',
 	database='trip_website'
 )
 
+#將sql指令取得的資料 由tuple改成dict
 mycursor = mydb.cursor(dictionary=True)
 
 app=Flask(__name__)
@@ -60,6 +61,7 @@ def getAttractions():
 		responseData={}
 		data = []
 
+		#依照response格式存放資料並在for迴圈結束後return
 		for attraction in result:
 			#取得img table中對應id的圖片網址 存放到list中
 			mycursor.execute(f"SELECT img_url FROM attractions LEFT JOIN attractions_img ON attractions.id = attractions_img.id WHERE attractions.id = {attraction['id']}")
@@ -82,13 +84,13 @@ def getAttractions():
 					'images':imgArray
 			})
 		
-		#依照response格式存放資料並在for迴圈結束後return
+		#判斷是否有下一頁 並將結果存放至responseData['nextPage']中準備return
 		if((int(qsPage)+1) * 12 > dataLen):
 			responseData['nextPage'] = None
 		else:
 			responseData['nextPage'] = int(qsPage)+1
-		responseData['data'] = data	
 
+		responseData['data'] = data	
 		return jsonify(responseData), 200
 	except:
 
@@ -101,17 +103,19 @@ def getAttractions():
 
 @app.route("/api/attraction/<attractionId>")
 def getAttraction(attractionId):
-	print(attractionId)
+
 	responseData = {}
 	try:
+		#join 資料及資料照片資料表 當id=網址參數才被join 其餘資料table 為 null 取出不為null的cloumn 
 		mycursor.execute(f"SELECT  img_url FROM attractions A  LEFT JOIN attractions_img B  ON A.id = B.id  and A.id={attractionId} WHERE B.img_url IS NOT NULL")
 		imgResult = mycursor.fetchall()
 		imgArray=[]
 		for img in imgResult:
 			imgArray.append(img["img_url"])
+
+		#取得指定id的資料 依照指定格式將資料存放至responseData 準備return
 		mycursor.execute(f"SELECT * FROM attractions WHERE id = {attractionId}")
 		result = mycursor.fetchone()
-
 		responseData["data"] = result
 		responseData["images"] = imgArray
 
@@ -120,6 +124,7 @@ def getAttraction(attractionId):
 				"error": True,
 				"message": "景點編號錯誤"
 			}), 400
+
 		return jsonify(responseData), 200
 	except:
 		return  jsonify({
@@ -128,6 +133,7 @@ def getAttraction(attractionId):
 		}), 500
 
 
-app.run(host="0.0.0.0", port=3000)
+app.run( port=3000)
+#host="0.0.0.0",
 
 
