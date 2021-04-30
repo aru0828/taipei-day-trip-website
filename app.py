@@ -5,7 +5,7 @@ import mysql.connector
 mydb = mysql.connector.connect(
 	host='localhost',
 	username='root',
-	password='122090513',
+	password='As5566&&',
 	database='trip_website'
 )
 
@@ -133,7 +133,7 @@ def getAttraction(attractionId):
 		}), 500
 
 
-app.run( port=3000)
-#host="0.0.0.0",
+app.run(host="0.0.0.0", port=3000)
+#
 
 
