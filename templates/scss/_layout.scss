@@ -13,7 +13,7 @@
      }
      .navbarList{
          display: flex;
-         li{
+         li:first-child{
              margin-right: 10px;
          }
          a{

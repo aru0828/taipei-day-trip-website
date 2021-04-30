@@ -14,7 +14,7 @@ function getAttractions(page=0){
     else{
         api = `/api/attractions?page=${page}`
     }
-    console.log(api)
+
     fetch(api)
     .then(response => response.json())
     .then( data => {
@@ -68,7 +68,7 @@ function createMainList(mainList, attraction){
     let mainListInfo = document.createElement('div');
     mainListInfo.classList.add("mainListInfo")
     let mrt = document.createElement('p');
-    let mrtText = document.createTextNode(attraction.mrt);
+    let mrtText = document.createTextNode(attraction.mrt ? attraction.mrt : "無" );
     let category = document.createElement('p');
     let categoryText = document.createTextNode(attraction.category)
     let title = document.createTextNode(attraction.name)
