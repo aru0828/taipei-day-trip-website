@@ -166,6 +166,7 @@ body {
   width: 100%;
   height: 46px;
   border: 1px solid #448899;
+  border-radius: 0 5px 5px 0;
   z-index: 98;
   padding: 15px;
 }
@@ -220,7 +221,7 @@ body {
 .main .mainList li {
   width: 22.5%;
   margin-bottom: 30px;
-  border: 1px solid #757575;
+  border: 1px solid  #E8E8E8;
   border-radius: 5px;
   margin: 0px 1.25% 30px 1.25%;
 }
@@ -228,9 +229,7 @@ body {
 .main .mainList li img {
   display: block;
   width: 100%;
-  max-height: 202px;
-  aspect-ratio: 1 / 1;
-  height: 70%;
+  aspect-ratio: 3 /1.85;
   margin-bottom: 15px;
   border-radius: 5px 5px 0 0;
 }
@@ -250,6 +249,7 @@ body {
   color: #757575;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 12px;
 }
 
 @media (max-width: 1200px) {
