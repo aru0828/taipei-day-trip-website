@@ -1,0 +1,190 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+@import "cssReset";
+@import "layout";
+
+*, *::after, *::before {
+    box-sizing: border-box;
+  }
+
+body{
+    font-family: Noto Sans TC;
+    font-style: normal;
+}
+
+.container{
+    max-width: 1200px;
+    margin:0 auto;
+}
+
+.ft-bold{
+    font-weight: bold;
+}
+
+.mb-15{
+    margin-bottom: 15px;
+}
+
+.attraction{
+    margin-bottom: 120px;
+    .main{
+        display:flex;
+        justify-content: space-around;
+        padding:37px 15px;
+        border-top:1px solid  #E8E8E8;
+        border-bottom:1px solid  #E8E8E8;
+        margin-bottom: 50px;
+       
+        .carouselContainer{
+            position: relative;
+            width: 540px;
+            border-radius: 5px;
+            margin-right: 30px;
+            display:flex;
+            justify-content: center;;
+            .carousel{
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                display: none;
+                visibility:hidden;
+                transition: visibility  0.6s ease;
+                img{
+                     width: 100%;
+                     height: 406px;
+                     object-fit: cover;
+                }
+            }
+            .carousel.active{
+                position: static;
+                display:block;
+                visibility: visible;
+            }
+            .prev{
+                cursor: pointer;
+                position: absolute;
+                top:50%;
+                margin-top: -18px;
+                left:10px;
+                display:inline-block;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background-image: url(../images/btn_leftArrow.png);
+                opacity: 0.7;
+            }
+            .next{
+                cursor: pointer;
+                position: absolute;
+                top:50%;
+                margin-top: -18px;
+                right:10px;
+                display:inline-block;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background-image: url(../images/btn_rightArrow.png);
+                opacity: 0.7;
+            }
+            .dotContainer{
+                position: absolute;
+                bottom:10;
+                .dot{
+                    display:inline-block;
+                    margin-right: 6px;
+                    width: 12px;
+                    height: 12px;
+                    background: white;
+                    opacity: 0.9;
+                    border-radius: 50%;
+                    transition: background-color 0.6s ease;
+                }
+                .dot:last-child{
+                    margin-right: 0;
+                }
+                .dot.active{
+                    background: #000;
+                    border:1.5px solid white;
+                }
+            }
+
+        }
+       
+        .order{
+            flex-grow: 1;
+            flex-shrink: 1;
+            display:flex;
+            flex-direction: column;
+            color:#666666;
+            padding:8px 0;
+            .title{
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 15px;
+            }
+            .info{
+                margin-bottom: 20px;
+            }
+            .orderForm{
+                flex-grow: 1;
+                background: #E8E8E8;
+                padding:15px 20px 5px 20px;
+                border-radius: 5px;
+                line-height: 23.17px;
+                label{
+                    margin-bottom: 15px;
+                }
+                .orderFormSubmit{
+                    font-size: 19px;
+                    border:0;
+                    margin-top: 15px;
+                    border-radius: 5px;
+                    padding:7px 20px;
+                    color:white;
+                    background: $primary-color;
+                }
+            }
+        }
+    }
+    .content{
+        line-height: 23.17px;
+        padding:0 15px;
+        .introTxt{
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@media(max-width:720px){
+    
+    .attraction{
+        .main{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .carouselContainer{
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+                .carousel{  
+                    img{
+                        height: auto;
+                    }
+                }
+                .order{
+                    
+                    .title, .info{
+                        padding-left: 20px;
+                    }
+                    .orderForm{
+                        padding-bottom: 15px;
+                    }
+                }
+            }
+            
+        }
+        .content{
+            padding: 0px 35px;
+        }
+    }
+}

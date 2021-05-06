@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="#">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/attraction.css">
+    <title>台北一日遊</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>台北一日遊</h1>
+            <ul class="navbarList">
+                <li>
+                    <a href="#">預定行程</a>   
+                </li>
+                <li>
+                    <a href="#">登入/註冊</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="attraction container">
+        <div class="main">
+            <div class="carouselContainer">
+               <a href="javascript:;" class="prev" onclick="prevOrNext(-1)"></a> 
+               <a href="javascript:;" class="next" onclick="prevOrNext(1)"></a> 
+
+               
+               <div class="dotContainer">
+               </div>
+            </div> 
+            <div class="order">
+                <h2 class="title"></h2>
+                <p  class="info"></p>
+                <form action="" class="orderForm">
+                    <p class="ft-bold mb-15">訂購導覽行程</p>
+                    <p class="mb-15">以此景點為中心的一日行程，帶您探索城市角落故事</p>
+                    <div class="input-group mb-15">
+                        <label class="ft-bold mb-15" for="date">選擇日期：</label>
+                        <input type="date" id="date" placeholder="yyyy-mm--dd">
+                    </div>
+                    <div class="input-group mb-15">
+                        <label class="ft-bold mb-15" for="time">選擇時間：</label>
+                        <input type="radio" id="PM" name="time" value="2000" onclick=changeCost(this)></label>
+                        <label for="AM">上半天</label>
+                        <input type="radio" id="PM" name="time" value="2500" onclick=changeCost(this)></label>
+                        <label for="PM">下半天</label>
+                    </div>
+                    <div class="input-group mb-15">
+                        <label class="ft-bold" for="cost">導覽費用：</label>
+                        <span class="cost">新台幣 2000 元</span>
+                    </div>
+                    <button class="orderFormSubmit" type="submit">開始預訂行程</button>
+                </form>
+            </div>         
+        </div>
+
+        <div class="content">
+            <p class="introTxt description"></p>
+            <p class="ft-bold contentAddressTitle">景點地址：</p>
+            <p class="introTxt contentAddress"></p>
+            <p class="ft-bold">交通方式：</p>
+            <p class="transport"></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>COPYRIGHT © 2021 台北一日遊</p>
+    </div>
+</body>
+
+</html>
+
+<script src="../static/js/attraction.js"></script>

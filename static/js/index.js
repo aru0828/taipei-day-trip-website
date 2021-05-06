@@ -63,6 +63,7 @@ searchBtn.addEventListener('click', function(){
 function createMainList(mainList, attraction){
     //DOM
     let li = document.createElement('li');
+    let a = document.createElement('a');
     let img = document.createElement('img');
     let h3 = document.createElement('h3');
     let mainListInfo = document.createElement('div');
@@ -79,9 +80,11 @@ function createMainList(mainList, attraction){
     category.appendChild(categoryText);
     mainListInfo.appendChild(mrt);
     mainListInfo.appendChild(category);
-    li.appendChild(img);
-    li.appendChild(h3);
-    li.appendChild(mainListInfo);
+    a.setAttribute('href', `/attraction/${attraction.id}`);
+    a.appendChild(img);
+    a.appendChild(h3);
+    a.appendChild(mainListInfo);
+    li.appendChild(a);
     mainList.appendChild(li);
 }
 

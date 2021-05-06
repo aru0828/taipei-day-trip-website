@@ -116,6 +116,14 @@ body {
   margin: 0 auto;
 }
 
+.ft-bold {
+  font-weight: bold;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
 .banner {
   overflow: hidden;
   height: 320px;
@@ -224,6 +232,10 @@ body {
   border: 1px solid  #E8E8E8;
   border-radius: 5px;
   margin: 0px 1.25% 30px 1.25%;
+}
+
+.main .mainList li a {
+  text-decoration: none;
 }
 
 .main .mainList li img {

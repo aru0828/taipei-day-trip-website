@@ -16,7 +16,13 @@ body{
     max-width: 1200px;
     margin:0 auto;
 }
+.ft-bold{
+    font-weight: bold;
+}
 
+.mb-15{
+    margin-bottom: 15px;
+}
 
 
 .banner{
@@ -120,6 +126,9 @@ body{
         flex-wrap: wrap;
         
         li{
+            a{
+                text-decoration: none;
+            }
             width: 22.5%;
             margin-bottom: 30px;
             border:1px solid  #E8E8E8;
