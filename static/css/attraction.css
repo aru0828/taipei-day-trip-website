@@ -244,11 +244,38 @@ body {
   background: #E8E8E8;
   padding: 15px 20px 5px 20px;
   border-radius: 5px;
-  line-height: 23.17px;
+  line-height: 28px;
 }
 
 .attraction .main .order .orderForm label {
   margin-bottom: 15px;
+}
+
+.attraction .main .order .orderForm .timeRadio:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: white;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+}
+
+.attraction .main .order .orderForm .timeRadio:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #448899;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
 }
 
 .attraction .main .order .orderForm .orderFormSubmit {
@@ -262,7 +289,7 @@ body {
 }
 
 .attraction .content {
-  line-height: 23.17px;
+  line-height: 30px;
   padding: 0 15px;
 }
 
@@ -281,14 +308,12 @@ body {
     margin-right: 0;
     margin-bottom: 20px;
   }
-  .attraction .main .carouselContainer .carousel img {
-    height: auto;
-  }
-  .attraction .main .carouselContainer .order .title, .attraction .main .carouselContainer .order .info {
+  .attraction .main .order .title, .attraction .main .order .info {
     padding-left: 20px;
   }
-  .attraction .main .carouselContainer .order .orderForm {
+  .attraction .main .order .orderForm {
     padding-bottom: 15px;
+    line-height: 23.17px;
   }
   .attraction .content {
     padding: 0px 35px;

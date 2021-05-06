@@ -4,6 +4,7 @@ let carouselLen=0;
 let cost = document.querySelector('.cost');
 
 
+
 function getAttraction(){
 
     let url = window.location.pathname.split("/")
