@@ -11,7 +11,6 @@ function getAttraction(){
     id = url[url.length-1];
     let api = `/api/attraction/${id}`
     
-
     fetch(api).then(response => {
         return response.json()
     })
