@@ -1,31 +1,16 @@
-<html lang="en">
-<head>
-    <link rel="shortcut icon" href="#">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/attraction.css">
-    <title>台北一日遊</title>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <h1>台北一日遊</h1>
-            <ul class="navbarList">
-                <li>
-                    <a href="#">預定行程</a>   
-                </li>
-                <li>
-                    <a href="#">登入/註冊</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+{% extends "base.html"%}
 
+
+    {%  block css%}
+    <link rel="stylesheet" href="../static/css/attraction.css">
+    {% endblock%}
+
+    {%  block main%}
     <div class="attraction container">
         <div class="main">
             <div class="carouselContainer">
-               <a href="javascript:;" class="prev" onclick="prevOrNext(-1)"></a> 
-               <a href="javascript:;" class="next" onclick="prevOrNext(1)"></a> 
+               <a href="javascript:;" class="prev" ></a> 
+               <a href="javascript:;" class="next" ></a> 
 
                
                <div class="dotContainer">
@@ -43,9 +28,9 @@
                     </div>
                     <div class="input-group mb-15">
                         <label class="ft-bold mb-15" for="time">選擇時間：</label>
-                        <input type="radio" class="timeRadio" name="time" value="2000" onclick=changeCost(this)></label>
+                        <input type="radio" class="timeRadio AM" name="time" value="2000" checked required></label>
                         <label for="AM">上半天</label>
-                        <input type="radio" class="timeRadio AM" name="time" value="2500" onclick=changeCost(this)></label>
+                        <input type="radio" class="timeRadio PM" name="time" value="2500" ></label>
                         <label for="PM">下半天</label>
                     </div>
                     <div class="input-group mb-15">
@@ -65,12 +50,11 @@
             <p class="transport"></p>
         </div>
     </div>
+    {% endblock %}
 
-    <div class="footer">
-        <p>COPYRIGHT © 2021 台北一日遊</p>
-    </div>
-</body>
+    
 
-</html>
-
-<script src="../static/js/attraction.js"></script>
+    {%  block javascript%}
+    <script type="module" src="../static/js/attraction.js"></script>
+    <script src="../static/js/member.js"></script>
+    {% endblock%}

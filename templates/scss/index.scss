@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 @import "cssReset";
 @import "layout";
+@import "modal";
 
 *, *::after, *::before {
     box-sizing: border-box;
@@ -10,6 +11,7 @@
 body{
     font-family: Noto Sans TC;
     font-style: normal;
+    position: relative;
 }
 
 .container{
@@ -193,3 +195,93 @@ body{
     }
 }
 
+// // 註冊及登入modal共用CSS
+// .modal{
+//     position: fixed;
+//     display:none;
+//     z-index: 99;
+//     left:50%;
+//     top:80px;
+//     transform:translateX(-50%);
+//     width: 340px;
+//     height: 275px;
+//     background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
+//     padding-top:10px;
+//     border-radius: 5px;
+//     Form{
+//         position: relative;
+//         display:flex;
+//         flex-direction: column;
+//         align-items: center;
+//         background: white;
+//         color:#666666;
+//         height: 100%;
+//         padding-top: 15px;
+//         border-radius: 0 0 5px 5px;
+//         h2{
+//             font-size: 24px;
+//             font-weight: bold;
+//             margin-bottom: 15px;
+//         }
+//         .closeModalBtn{
+//             position: absolute;
+//             display:inline-block;
+//             cursor: pointer;
+//             right:17px;
+//             top:17px;
+//             width: 16px;
+//             height: 16px;
+//             background-image: url('/static/images/icon_close.png');
+//         }
+//         input{
+//             width: 310px;
+//             height: 47px;
+//             margin-bottom: 10px;
+//             border: 1px solid #CCCCCC;
+//             padding:15px;
+//             border-radius: 5px;
+//         }
+//         button{
+//             font-size: 17px;
+//             color:white;
+//             width: 310px;
+//             height: 47px;
+//             background: #448899;
+//             border:0;
+//             border-radius: 5px;
+//             margin-bottom: 10px;
+//         }
+//         a{  
+//             color:#666666;
+//             text-decoration: none;
+//             line-height: 22px;
+//         }
+//         .formMsg.danger{
+//             color:#d9534f;
+//         }
+//         .formMsg.success{
+//             color:#5cb85c;
+//         }
+//     }
+// }
+// .registerModal{
+//     height: 332px;
+// }
+
+// .modal.active{
+//     display:block;
+// }
+// .modalBG.active{
+//     position: absolute;
+//     top: 0;
+//     bottom:0;
+//     left:0;
+//     right:0;
+//     background: #000;
+//     opacity: 0.25;
+// }
+
+// @keyframes toggleActive{
+//     from{display:none}
+//     to{display:block }
+// }

@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 @import "cssReset";
 @import "layout";
+@import "modal";
 
 *, *::after, *::before {
     box-sizing: border-box;
@@ -46,9 +47,7 @@ body{
                 position: absolute;
                 height: 100%;
                 width: 100%;
-                display: none;
-                visibility:hidden;
-                transition: visibility  0.6s ease;
+                opacity:0;  
                 img{
                      width: 100%;
                      height: 406px;
@@ -57,8 +56,8 @@ body{
             }
             .carousel.active{
                 position: static;
-                display:block;
-                visibility: visible;
+                opacity:1;
+                transition: opacity  2s;
             }
             .prev{
                 cursor: pointer;
@@ -70,7 +69,7 @@ body{
                 width: 36px;
                 height: 36px;
                 border-radius: 50%;
-                background-image: url(../images/btn_leftArrow.png);
+                background-image: url(../../static/images/btn_leftArrow.png);
                 opacity: 0.7;
             }
             .next{
@@ -83,7 +82,7 @@ body{
                 width: 36px;
                 height: 36px;
                 border-radius: 50%;
-                background-image: url(../images/btn_rightArrow.png);
+                background-image: url(../../static/images/btn_rightArrow.png);
                 opacity: 0.7;
             }
             .dotContainer{
@@ -134,7 +133,7 @@ body{
                 label{
                     margin-bottom: 15px;
                 }
-                
+        
                 .timeRadio:after {
                     width: 15px;
                     height: 15px;
@@ -193,15 +192,8 @@ body{
                 width: 100%;
                 margin-right: 0;
                 margin-bottom: 20px;
-                .carousel{  
-                    img{
-                        
-                    }
-                }
-               
             }
-            .order{
-                    
+            .order{  
                 .title, .info{
                     padding-left: 20px;
                 }

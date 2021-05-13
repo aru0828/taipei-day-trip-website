@@ -11,10 +11,10 @@ mydb = mysql.connector.connect(
 
 #將sql指令取得的資料 由tuple改成dict
 mycursor = mydb.cursor(dictionary=True)
-api = Blueprint('blueprint', __name__)
+attractionAPI = Blueprint('attractionAPI', __name__)
 
 
-@api.route("/api/attractions")
+@attractionAPI.route("/api/attractions")
 def getAttractions():
 	#取出query string
 	qsPage =request.args.get("page")
@@ -82,7 +82,7 @@ def getAttractions():
 		), 500
 
 
-@api.route("/api/attraction/<attractionId>")
+@attractionAPI.route("/api/attraction/<attractionId>")
 def getAttraction(attractionId):
 
 	responseData = {}
