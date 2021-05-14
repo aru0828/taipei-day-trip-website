@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="#">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block css %}{% endblock %}
+    <title>台北一日遊</title>
+</head>
+<body>
+ 
+    <nav class="navbar">
+        <div class="container">
+            <a href="/">
+                <h1>台北一日遊</h1>
+            </a>
+            
+            <ul class="navbarList">
+                <li>
+                    <a href="#">預定行程</a>   
+                </li>
+                <li class="memberAction">
+                    <a href="javascript:;" class="signinBtn" onclick=openModal() >登入/註冊</a>
+                    <a href="javascript:;" class="signoutBtn" onclick=signOut()>登出系統</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% block banner %}{% endblock%}
+   
+    
+
+    {% block main  %}{% endblock%}
+    
+
+    <div class="footer">
+        <p>COPYRIGHT © 2021 台北一日遊</p>
+    </div>
+
+
+    
+    <div class="loginModal modal">
+        <form  class="loginForm" method="PATCH"> 
+            <span class="closeModalBtn" onclick=closeModal()></span>
+            <h2 class="loginTitle">登入會員帳號</h2>
+            <input type="text" placeholder="輸入電子信箱" name="email" required>
+            <input type="password" placeholder="輸入密碼" name="password" required >
+            <button type="submit" class="loginBtn submitBtn">登入帳戶</button>
+            <h3 class="formMsg"></h3>
+            <a href="javascript:;" onclick="openModal('register')">還沒有帳戶？點此註冊</a>
+        </form>
+    </div>
+
+    <div class="registerModal modal">
+        <form class="registerForm" method="POST">
+            <span class="closeModalBtn" onclick=closeModal()></span>
+            <h2 class="registerTitle">註冊會員帳號</h2>
+            <input type="text" placeholder="輸入姓名" name="name" required minlength="3">
+            <input type="text" placeholder="輸入電子信箱" name="email" required>
+            <input type="password" placeholder="輸入密碼" name="password" required minlength="6">
+            <button type="submit" class="registerBtn submitBtn">註冊帳戶</button>
+            <h3 class="formMsg"></h3>
+            <a href="javascript:;" onclick="openModal('login')">已經有帳戶了？點此登入</a>
+        </form>
+    </div>
+
+    <div class="modalBG"></div>
+
+
+</body>
+
+
+
+
+</html>
+{% block javascript %}{% endblock%}

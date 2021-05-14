@@ -54,7 +54,11 @@ table {
 }
 
 .navbar {
-  margin: 10px 0px;
+  padding: 10px 0px;
+}
+
+.navbar a {
+  text-decoration: none;
 }
 
 .navbar h1 {
@@ -85,6 +89,14 @@ table {
   color: #666666;
 }
 
+.navbar .navbarList .memberAction a {
+  display: none;
+}
+
+.navbar .navbarList .memberAction a.active {
+  display: block;
+}
+
 @media (max-width: 1200px) {
   .navbar .container {
     padding: 0px 10px;
@@ -102,6 +114,110 @@ table {
   padding: 45px 0px;
 }
 
+.modal {
+  position: fixed;
+  z-index: 99;
+  left: 50%;
+  top: 80px;
+  transform: translateX(-50%) scale(0);
+  width: 340px;
+  height: 275px;
+  background: linear-gradient(270deg, #337788 0%, #66AABB 100%);
+  padding-top: 10px;
+  border-radius: 5px;
+}
+
+.modal Form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  color: #666666;
+  height: 100%;
+  padding-top: 15px;
+  border-radius: 0 0 5px 5px;
+}
+
+.modal Form h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.modal Form .closeModalBtn {
+  position: absolute;
+  display: inline-block;
+  cursor: pointer;
+  right: 17px;
+  top: 17px;
+  width: 16px;
+  height: 16px;
+  background-image: url("/static/images/icon_close.png");
+}
+
+.modal Form input {
+  width: 310px;
+  height: 47px;
+  margin-bottom: 10px;
+  border: 1px solid #CCCCCC;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.modal Form button {
+  font-size: 17px;
+  color: white;
+  width: 310px;
+  height: 47px;
+  background: #448899;
+  border: 0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.modal Form a {
+  color: #666666;
+  text-decoration: none;
+  line-height: 22px;
+}
+
+.modal Form .formMsg.danger {
+  color: #d9534f;
+}
+
+.modal Form .formMsg.success {
+  color: #5cb85c;
+}
+
+.registerModal {
+  height: 332px;
+}
+
+.modal.active {
+  transform: translateX(-50%) scale(1);
+  transition: all 0.25s;
+}
+
+.modalBG.active {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  opacity: 0.25;
+}
+
+@keyframes toggleActive {
+  from {
+    display: none;
+  }
+  to {
+    display: block;
+  }
+}
+
 *, *::after, *::before {
   box-sizing: border-box;
 }
@@ -109,6 +225,7 @@ table {
 body {
   font-family: Noto Sans TC;
   font-style: normal;
+  position: relative;
 }
 
 .container {

@@ -1,5 +1,9 @@
 from flask import Flask,request, jsonify, render_template, Blueprint
-from api.attraction import api as attractionApi
+from api.attraction import attractionAPI
+from api.user import userAPI
+import os
+
+
 # import mysql.connector
 
 
@@ -13,10 +17,12 @@ from api.attraction import api as attractionApi
 # #將sql指令取得的資料 由tuple改成dict
 # mycursor = mydb.cursor(dictionary=True)
 app=Flask(__name__)
-app.register_blueprint(attractionApi)
+app.register_blueprint(attractionAPI)
+app.register_blueprint(userAPI)
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 app.config["JSON_SORT_KEYS"] = False
+app.config['SECRET_KEY'] = os.urandom(24)
 
 # Pages
 @app.route("/")
@@ -36,7 +42,7 @@ def thankyou():
 
 
 
-app.run(host="0.0.0.0",  port=3000)
+app.run(host="0.0.0.0", port=3000)
 #host="0.0.0.0", 
 
 

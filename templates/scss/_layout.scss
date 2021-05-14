@@ -1,5 +1,8 @@
 .navbar{
-    margin: 10px 0px;
+    padding: 10px 0px;
+    a{
+        text-decoration: none;
+    }
     h1{
         font-family: Noto Sans;
         font-size: 30px;
@@ -21,6 +24,12 @@
              text-decoration: none;
              display: block;
              color:#666666;
+         }
+         .memberAction a{
+             display:none;
+         }
+         .memberAction a.active{
+             display:block;
          }
      }
  }
