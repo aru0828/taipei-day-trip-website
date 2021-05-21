@@ -36,8 +36,12 @@ function signOut() {
     api = "/api/user"
     fetch(api, {
         method: 'DELETE'
-    }).then(location.reload())
-
+    }).then(response => response.json())
+    .then( result => {
+        console.log(result);
+        location.reload()
+    }
+    )
 }
 
 
@@ -75,7 +79,9 @@ function submitForm(formData) {
             else if (data.ok && requestMethod === 'POST') {
                 let formMsg = document.querySelector('.registerForm .formMsg');
                 cleanFormMsg(formMsg, 'danger', 'success');
+                document.querySelector(`.registerForm `).reset();
                 formMsg.appendChild(document.createTextNode('註冊成功'));
+
             }
 
             // PATCH 新增登入錯誤訊息
@@ -109,7 +115,7 @@ modalBG.addEventListener("click", function () {
 
 
 // 取消form表單預設行為
-document.querySelectorAll('form').forEach(form => {
+document.querySelectorAll('.modal form').forEach(form => {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
         getFormData();
