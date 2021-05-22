@@ -6,6 +6,7 @@ mydb = mysql.connector.connect(
 	host='localhost',
 	username='root',
 	password='As5566&&',
+	# password='122090513',
 	database='trip_website'
 )
 
@@ -29,8 +30,8 @@ def getAttractions():
 		else:
 			mycursor.execute(f"SELECT count(*)  FROM attractions WHERE name LIKE '%{qsKeyword}%'")
 			dataLen = mycursor.fetchone()["count(*)"]
-			print(dataLen)
-		#判斷是否有關鍵字查詢 未完成
+			
+		#判斷是否有關鍵字查詢
 		if(qsKeyword):
 			mycursor.execute(f"SELECT *  FROM attractions WHERE name LIKE '%{qsKeyword}%' limit { int(qsPage)*12 }, 12")
 		elif(not qsKeyword):

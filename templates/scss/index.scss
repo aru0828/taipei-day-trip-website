@@ -3,28 +3,8 @@
 @import "cssReset";
 @import "layout";
 @import "modal";
+@import "share";
 
-*, *::after, *::before {
-    box-sizing: border-box;
-  }
-
-body{
-    font-family: Noto Sans TC;
-    font-style: normal;
-    position: relative;
-}
-
-.container{
-    max-width: 1200px;
-    margin:0 auto;
-}
-.ft-bold{
-    font-weight: bold;
-}
-
-.mb-15{
-    margin-bottom: 15px;
-}
 
 
 .banner{

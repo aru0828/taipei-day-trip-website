@@ -6,6 +6,7 @@ mydb = mysql.connector.connect(
 	host='localhost',
 	username='root',
 	password='As5566&&',
+    # password='122090513',
 	database='trip_website'
 )
 
@@ -17,22 +18,28 @@ def function():
     # 取得使用者資訊
     if request.method == 'GET':
         
-        sessionEmail = session.get("email")
-        sql = f"SELECT * FROM users WHERE email = '{sessionEmail}'"
-        mycursor.execute(sql)
-        result = mycursor.fetchone()
-        if result:
+        sessionEmail = session.get("user")
+        user = None
+        
+        if sessionEmail:
+            sessionEmail = sessionEmail["email"]
+            sql = f"SELECT * FROM users WHERE email = '{sessionEmail}'"
+            mycursor.execute(sql)
+            user = mycursor.fetchone()
+
+        if user:
             return jsonify({
                     "data": {
-                        "id": result["id"],
-                        "name": result["name"],
-                        "email": result["email"]
+                        "id": user["id"],
+                        "name": user["name"],
+                        "email": user["email"]
                     }
-                })
+                }), 200
         else:
             return jsonify({
                     "data": None
                 })
+        
     # 註冊
     elif request.method == 'POST':    
         name  = request.form.get('name')
@@ -74,13 +81,14 @@ def function():
         email = request.form.get('email')
         password = request.form.get('password')
         
+        
         sql = f"SELECT * FROM users WHERE email = '{email}' AND password = '{password}'"
         mycursor.execute(sql)
-        result = mycursor.fetchone()
+        user = mycursor.fetchone()
 
         try:
-            if result:
-                session["email"] = email
+            if user:
+                session["user"] = { "id" : user["id"], "email" : user['email'], "name" : user['name'] }
                 return jsonify(
                     {
                         "ok": True
@@ -98,7 +106,7 @@ def function():
                 }), 500
     #登出
     elif request.method == 'DELETE':
-        session["email"] = False
+        session["user"] = False
         return jsonify({
             "ok":True
         })

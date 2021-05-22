@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="../static/css/booking.css">
+{% endblock  %}
+
+
+{% block main %}
+<div class="booking container">
+
+    <div class="bookingMessageBar">
+        <h2>您好，<span class="userName"></span>，待預訂的行程如下：</h2>
+        <div class="nullBooking">目前沒有任何待預訂的行程</div>
+    </div>
+    
+
+    <div class="bookingContainer ">
+        <form action="" class="bookingForm">
+            <div class="bookingInfo">
+                <img src="" alt="" class="InfoImg" width="266" height="200">
+                <div class="bookingInfoTxt">
+                    <h3>台北一日遊：<span class="InfoName"></span></h3>
+                    <p><b>日期 ： </b><span class="InfoDate"></span></p>
+                    <p><b>時間 ： </b><span class="InfoTime"></span></p>
+                    <p><b>費用 ： </b><span class="InfoPrice"></span></p>
+                    <p><b>地點 ： </b><span class="InfoAddress"></span></p>
+                </div>
+                <div>
+                    <span class="iconDelete"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="bookingContact">
+                <h2>您的聯絡資訊</h2>
+                <div class="inputGroup">
+                    <label for="contactName">聯絡姓名：</label>
+                    <input type="text" id="contactName">
+                </div>
+                <div class="inputGroup">
+                    <label for="contactEmail">連絡信箱：</label>
+                    <input type="email" id="contactEmail">
+                </div>
+                <div class="inputGroup">
+                    <label for="contactTel">手機號碼：</label>
+                    <input type="tel" id="contactTel">
+                </div>
+                <b>請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</b>
+            </div>
+                
+                <hr>
+            <div class="bookingPay">
+                <h2>信用卡付款資訊</h2>
+                <div class="inputGroup">
+                    <label for="payPassword">卡片號碼：</label>
+                    <input type="password" id="payPassword">
+                </div>
+                <div class="inputGroup">
+                    <label for="payDate">過期時間：</label>
+                    <input type="date" id="payExpiry" placeholder="MM / YY">
+                </div>
+                <div class="inputGroup">
+                    <label for="">驗證密碼：</label>
+                    <input type="text" id="" placeholder="CVV">
+                </div>
+            </div>
+            <hr>
+
+            <div class="bookingConfirm">
+                <b>總價：新台幣 <span class="price"></span> 元</b>
+                <button class="bookingSubmit">確認訂購並付款</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+{% endblock   %}
+
+{% block javascript %}
+<script type="module" src="../static/js/booking.js"></script>
+<script src="../static/js/member.js"></script>
+<script type="module" src="../static/js/navbar.js"></script>
+{% endblock         %}

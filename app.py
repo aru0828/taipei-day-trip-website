@@ -1,6 +1,7 @@
 from flask import Flask,request, jsonify, render_template, Blueprint
 from api.attraction import attractionAPI
 from api.user import userAPI
+from api.booking import bookingAPI
 import os
 
 
@@ -19,6 +20,7 @@ import os
 app=Flask(__name__)
 app.register_blueprint(attractionAPI)
 app.register_blueprint(userAPI)
+app.register_blueprint(bookingAPI)
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 app.config["JSON_SORT_KEYS"] = False

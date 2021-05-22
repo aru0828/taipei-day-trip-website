@@ -24,13 +24,13 @@
                     <p class="mb-15">以此景點為中心的一日行程，帶您探索城市角落故事</p>
                     <div class="input-group mb-15">
                         <label class="ft-bold mb-15" for="date">選擇日期：</label>
-                        <input type="date" id="date" placeholder="yyyy-mm--dd">
+                        <input type="date" id="date" placeholder="yyyy-mm--dd" required>
                     </div>
                     <div class="input-group mb-15">
                         <label class="ft-bold mb-15" for="time">選擇時間：</label>
-                        <input type="radio" class="timeRadio AM" name="time" value="2000" checked required></label>
+                        <input type="radio" class="timeRadio AM" name="time" value="morning" checked required></label>
                         <label for="AM">上半天</label>
-                        <input type="radio" class="timeRadio PM" name="time" value="2500" ></label>
+                        <input type="radio" class="timeRadio PM" name="time" value="afternoon" ></label>
                         <label for="PM">下半天</label>
                     </div>
                     <div class="input-group mb-15">
@@ -57,4 +57,5 @@
     {%  block javascript%}
     <script type="module" src="../static/js/attraction.js"></script>
     <script src="../static/js/member.js"></script>
+    <script type="module" src="../static/js/navbar.js"></script>  
     {% endblock%}

@@ -40,6 +40,14 @@ function changeImgId(n, mode = "prevNext") {
 
 //View
 function renderAttraction() {
+
+    // input date 不能選擇之前的日期
+    const date = document.getElementById('date');
+    let d = new Date();
+    let minDate =`${d.getFullYear()}-0${d.getMonth()+1}-${d.getDate()}`;
+    date.setAttribute("min", minDate);
+
+
     // 選取輪播區塊父層元素
     const carouselContainer = document.querySelector('.carouselContainer');
     const dotContainer = document.querySelector('.dotContainer');
@@ -118,6 +126,46 @@ function dotClick(n) {
     changeImg();
 }
 
+function submitOrderForm(){
+
+    
+    checkSignin().then(result => {
+        // 確定使用者登入中才呼叫api
+        if (result.data) {
+            const api = '/api/booking'
+            let formData = new FormData();
+            // get attraction id
+            let url = window.location.pathname.split("/");
+            let id = url[url.length - 1]; 
+            let date = document.getElementById('date').value;
+            let time = document.querySelector('input[name=time]:checked').value;
+            let price = time === 'morning' ? 2000 : 2500;
+            formData.append("attractionId", id);
+            formData.append("date", date);
+            formData.append("time", time);
+            formData.append("price", price);
+
+            fetch(api, 
+                {
+                    method:'POST',
+                    body:formData
+                })
+                .then(response =>  response.json())
+                .then(result => {  
+                    if(result.ok){
+                        alert('新增成功');
+                        window.location.href = "/booking";
+                    }
+                })
+        }
+        else{
+            // 未登入 開啟登入modal
+            openModal();
+        }
+    })
+    
+}
+
 
 // 監聽事件
 document.querySelector('.prev').addEventListener("click", function () {
@@ -128,12 +176,17 @@ document.querySelector('.next').addEventListener("click", function () {
     prevOrNext(1)
 });
 
-document.querySelector('.AM').addEventListener("click", function (e) {
-    changeCost(e.target.value);
-})
-document.querySelector('.PM').addEventListener("click", function (e) {
-    changeCost(e.target.value);
+// 監聽time radio 
+document.querySelectorAll('.timeRadio').forEach(radio => {
+    radio.addEventListener('click', function(e){
+        let price = e.target.value === 'morning' ? 2000 : 2500;
+        changeCost(price);
+    })
 })
 
+document.querySelector('.orderForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    submitOrderForm();
+})
 
 init();
