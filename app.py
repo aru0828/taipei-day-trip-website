@@ -1,19 +1,9 @@
 from flask import Flask,request, jsonify, render_template, Blueprint
+
 from api.attraction import attractionAPI
 from api.user import userAPI
 from api.booking import bookingAPI
 import os
-
-
-# import mysql.connector
-
-
-# mydb = mysql.connector.connect(
-# 	host='localhost',
-# 	username='root',
-# 	password='122090513',
-# 	database='trip_website'
-# )
 
 # #將sql指令取得的資料 由tuple改成dict
 # mycursor = mydb.cursor(dictionary=True)
@@ -44,7 +34,7 @@ def thankyou():
 
 
 
-app.run(host="0.0.0.0", port=3000)
+app.run(port=3000)
 #host="0.0.0.0", 
 
 
