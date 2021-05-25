@@ -9,7 +9,7 @@ connection_pool = pooling.MySQLConnectionPool(pool_name="trip_pool",
                                                   host='localhost',
                                                   database='trip_website',
                                                   user='root',
-                                                  password='122090513')
+                                                  password='As5566&&')
 
 def closeConnect(mydb, mycursor):
     if mydb.is_connected():
