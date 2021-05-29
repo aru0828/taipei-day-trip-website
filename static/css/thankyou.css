@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap");
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -246,182 +245,113 @@ body {
   color: #5cb85c;
 }
 
-.booking {
+.thank {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.thank h3 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.thank p {
+  color: #666666;
+  margin-bottom: 15px;
+}
+
+.thank p:last-child {
+  margin-bottom: 0;
+}
+
+.order {
   padding-top: 40px;
   color: #666666;
 }
 
-.booking b {
+.order b {
   font-weight: bold;
 }
 
-.booking hr {
+.order hr {
   margin: 0;
   border-top: 1px solid #E8E8E8;
   border-bottom: 0;
 }
 
-.booking h2 {
+.order h2 {
   font-size: 19px;
   font-weight: bold;
   max-width: 1000px;
   margin: 0 auto 35px auto;
 }
 
-.booking .nullBooking {
-  display: none;
-  font-weight: bold;
-  max-width: 1000px;
-  margin: 0 auto 35px auto;
-}
-
-.booking .nullBooking.active {
-  display: block;
-}
-
-.booking .bookingContainer {
+.order .orderContainer {
   margin: 40px auto 40px auto;
 }
 
-.booking .bookingForm .inputGroup {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.booking .bookingForm .inputGroup:last-child {
-  margin-bottom: 0;
-}
-
-.booking .bookingForm input {
-  width: 200px;
-  height: 38px;
-  border-radius: 5px;
-  border: 1px solid #E8E8E8;
-  padding: 10px;
-}
-
-.booking .bookingInfo {
+.order .orderInfo {
   display: flex;
   max-width: 1000px;
   margin: 0 auto 40px auto;
   position: relative;
 }
 
-.booking .bookingInfo img {
+.order .orderInfo img {
   margin-right: 22px;
   height: auto;
 }
 
-.booking .bookingInfo .bookingInfoTxt h3 {
+.order .orderInfo .orderInfoTxt h3 {
   padding: 5px 0;
   margin-bottom: 25px;
   color: #448899;
   font-weight: bold;
 }
 
-.booking .bookingInfo .bookingInfoTxt p {
+.order .orderInfo .orderInfoTxt p {
   margin-bottom: 15px;
 }
 
-.booking .bookingInfo .bookingInfoTxt p:last-child {
+.order .orderInfo .orderInfoTxt p:last-child {
   margin-bottom: 0;
 }
 
-.booking .bookingInfo .iconDelete {
-  width: 30px;
-  height: 30px;
-  background-image: url("../../static/images/icon_delete.png");
-  position: absolute;
-  right: 0px;
-  top: 0px;
-}
-
-.booking .bookingContact, .booking .bookingPay {
+.order .orderContact {
   max-width: 1000px;
   margin: 0 auto;
   padding: 40px 0;
 }
 
-.booking .bookingConfirm {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.booking .bookingConfirm b {
-  margin-bottom: 30px;
-  font-weight: bold;
-}
-
-.booking .bookingConfirm .bookingSubmit {
-  font-size: 19px;
-  display: block;
-  padding: 10px 20px;
-  border: 0;
-  border-radius: 5px;
-  color: white;
-  background: #448899;
+.order .orderContact p {
+  margin-bottom: 15px;
 }
 
 @media (max-width: 992px) {
-  .booking .bookingMessageBar {
-    margin-left: 10px;
-  }
-  .booking .bookingContainer {
+  .order .orderContainer {
     margin: 0px 10px 40px 10px;
   }
-  .booking .bookingInfo {
+  .order .orderInfo {
     margin-right: 0;
-  }
-  .booking .bookingConfirm {
-    padding-right: 10px;
   }
 }
 
 @media (max-width: 520px) {
-  .booking h2 {
+  .order h2 {
     max-width: 1000px;
     margin: 0 auto 35px auto;
   }
-  .booking .bookingInfo {
+  .order .orderInfo {
     flex-direction: column;
     margin-bottom: 30px;
   }
-  .booking .bookingInfo img {
+  .order .orderInfo img {
     width: 100%;
     margin-bottom: 30px;
   }
-  .booking .bookingInfo .bookingInfoTxt {
+  .order .orderInfo .bookingInfoTxt {
     margin-bottom: 5px;
   }
-  .booking .bookingInfo .iconDelete {
-    margin-left: auto;
-    position: static;
-    display: block;
-    justify-self: end;
-  }
-  .booking .bookingForm {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
 }
-
-.tpfield {
-  width: 200px;
-  height: 38px;
-  border-radius: 5px;
-  border: 1px solid #E8E8E8;
-  padding: 10px;
-}
-
-/* Bootstrap 的 focus style */
-.tappay-field-focus {
-  border-color: #66afe9;
-  outline: 0;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
-}
-/*# sourceMappingURL=booking.css.map */
+/*# sourceMappingURL=thankyou.css.map */

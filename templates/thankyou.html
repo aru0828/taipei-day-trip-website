@@ -1,0 +1,61 @@
+{% extends "base.html "%}
+
+
+{% block css %}
+<link rel="stylesheet" href="../static/css/thankyou.css">
+{% endblock %}
+    
+{% block main %}
+<div class="thank">
+    <h3>感謝預定，預定資訊如下</h3>
+    <p>訂單編號: <span class="orderNumber"></span></p>
+    <p>付款狀態: <span class="orderStatus"></span></p>
+</div>
+
+<div class="order container">
+
+    <!-- <div class="orderMessageBar">
+        <h3>感謝預定，導覽資訊如下</h3>
+        <p >訂單編號: <span class="orderNumber"></span>1622119559</p>
+    </div> -->
+    
+    <div class="orderContainer">
+        
+            <div class="orderInfo">
+                <img src="" alt="" class="InfoImg" width="266" height="200">
+                <div class="orderInfoTxt">
+                    <h3>台北一日遊：<span class="orderName"></span></h3>
+                    <p>
+                        <b>日期 ： </b><span class="orderDate"></span>
+                    </p>
+                    <p>
+                        <b>時間 ： </b><span class="orderTime"></span>   
+                    </p>
+                    <p>
+                        <b>費用 ： </b><span class="orderPrice"></span>  
+                    </p>
+                    <p>
+                        <b>地點 ： </b><span class="orderAddress"></span>
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <div class="orderContact">
+                <h2>您的聯絡資訊</h2>
+                <p>聯絡姓名 : <span class="orderContactName"></span></p>
+                <p>聯絡信箱 : <span class="orderEmail"></span></p>
+                <p>手機號碼 : <span class="orderPhone"></span></p>
+                <b>請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</b>
+            </div>
+    </div>
+</div>
+
+
+{% endblock%}
+
+
+{% block javascript %}
+<script type="module" src="../static/js/thankyou.js"></script>
+<script src="../static/js/member.js"></script>
+<script type="module" src="../static/js/navbar.js"></script>
+{% endblock%}

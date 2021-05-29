@@ -10,6 +10,8 @@ export function checkSignin() {
 
         if (data.data) {
             let signoutBtn = document.querySelector('.signoutBtn');
+            let historyOrderBtn = document.querySelector('.historyOrderBtn');
+            historyOrderBtn.classList.add('active')
             signoutBtn.classList.add('active');
         }
         else {

@@ -1,0 +1,73 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+@import "cssReset";
+@import "layout";
+@import "modal";
+@import "share";
+
+
+.title{
+    font-size: 28px;
+    line-height: 42px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.order{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.orderTableContainer{
+    display:flex;
+    justify-content: center;
+}
+
+
+
+.orderTable {
+    a{
+        color:$primary-color;
+        text-decoration: none;
+    }
+    .orderPrice{
+        text-align: right;
+    }
+}
+
+@media(max-width:1024px){
+    .order{
+        padding:0 10px;
+    }
+}
+
+
+
+// codepen template
+.flat-table {
+    -webkit-font-smoothing: antialiased;
+    overflow: auto;
+    text-align: center;
+    
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    
+    th {
+      background-color: $primary-color;
+      color: white;
+      font-weight: normal;
+      padding: 20px 15px;
+      text-align: center;
+    }
+    td {
+      padding: 20px 15px;
+    }
+    tr{
+        background-color: rgb(238, 238, 238);
+        color: rgb(111, 111, 111);
+    }
+    tr:nth-child(odd) {
+        background-color: #fff;
+    }
+  }

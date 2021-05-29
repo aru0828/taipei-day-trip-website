@@ -3,6 +3,7 @@ import { checkSignin } from "./checkSignin.js";
 //  model 
 let bookingData={};
 let userData ={};
+let orderApiDone = true;
 function getBookingData(){
   fetch('/api/booking')
   .then(response => response.json())
@@ -71,6 +72,104 @@ document.querySelector('.iconDelete').addEventListener('click', function(e){
   })
 })
 
+// submit booking
+document.querySelector('.bookingForm').addEventListener('submit', (e) => {
+  
+  
+  e.preventDefault();
+  
+  let tappayStatus = TPDirect.card.getTappayFieldsStatus()
+
+  if (tappayStatus.canGetPrime && orderApiDone){
+
+    orderApiDone = false;
+    TPDirect.card.getPrime((result) => {
+
+      if (result.status !== 0) {
+          alert('錯誤訊息 : ' + result.msg)
+          return
+      }
+      
+    
+      // 傳送到order api的參數
+      let contactName  = document.getElementById('contactName').value;
+      let contactEmail = document.getElementById('contactEmail').value;
+      let contactTel = document.getElementById('contactTel').value;
+      // 避免物件傳址
+      let trip = JSON.parse(JSON.stringify(bookingData.data));
+      let requestData = {
+        "prime": result.card.prime,
+        "order": {
+          "price": trip.price,
+          'trip':trip,
+          "contact": {
+            "name": contactName,
+            "email": contactEmail,
+            "phone": contactTel
+          }
+        }
+      }
+      delete trip.price;
+      
+      fetch('/api/orders', {
+          method: 'POST',
+          body: JSON.stringify(requestData),
+          headers:{
+            'Content-Type': "application/json"
+          }})
+      .then(response => response.json())
+      .then(result => {
+        if(result.data){
+          orderApiDone = true;
+          alert(result.data.payment.message);
+          location.href = `/thankyou?number=${result.data.number}`;
+        }
+        
+      })
+      
+    })
+  }
+  
+})
+
 
 init();
+
+// tappay
+
+let fields = {
+  'number': {
+      'element': '#card-number',
+      'placeholder': '**** **** **** ****'
+  },
+  'expirationDate': {
+      'element': '#card-expiration-date',
+      'placeholder': 'MM / YY'
+  },
+  'ccv': {
+      'element': '#card-ccv',
+      'placeholder': 'ccv'
+  }
+}
+
+let styles = {
+  // Style all elements
+  'input': {
+      'color': 'red',
+  },
+  ':focus': {
+      'color': 'black'
+  },
+  '.valid': {
+      'color': 'green'
+  },
+  '.invalid': {
+      'color': 'red'
+  },
+}
+
+TPDirect.card.setup({
+  'fields': fields,
+  'styles': styles
+})
 
