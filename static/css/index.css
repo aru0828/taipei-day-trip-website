@@ -79,8 +79,12 @@ table {
   display: flex;
 }
 
-.navbar .navbarList li:first-child {
+.navbar .navbarList li {
   margin-right: 10px;
+}
+
+.navbar .navbarList li:last-child {
+  margin-right: 0;
 }
 
 .navbar .navbarList a {
@@ -182,14 +186,6 @@ table {
   line-height: 22px;
 }
 
-.modal Form .formMsg.danger {
-  color: #d9534f;
-}
-
-.modal Form .formMsg.success {
-  color: #5cb85c;
-}
-
 .registerModal {
   height: 332px;
 }
@@ -239,6 +235,14 @@ body {
 
 .mb-15 {
   margin-bottom: 15px;
+}
+
+*.danger {
+  color: #d9534f;
+}
+
+*.success {
+  color: #5cb85c;
 }
 
 .banner {

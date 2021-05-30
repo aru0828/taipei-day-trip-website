@@ -1,0 +1,130 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+@import "cssReset";
+@import "layout";
+@import "modal";
+@import "share";
+
+
+
+.thank{
+    text-align: center;
+    margin-top: 40px;
+    
+    h3{ 
+        font-size:26px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    p{
+        color:#666666;
+        margin-bottom: 15px;
+    }
+    p:last-child{
+        margin-bottom: 0;
+    }
+    
+}
+
+.order{
+    padding-top: 40px;
+    color:#666666;
+    b{
+        font-weight: bold;
+    }
+    hr{
+        margin: 0;
+        border-top: 1px solid #E8E8E8;
+        border-bottom: 0;
+    }
+
+    h2{
+        font-size: 19px;
+        font-weight: bold;
+        max-width: 1000px;
+        margin: 0 auto 35px auto;
+    }
+    
+    
+    .orderContainer{
+        margin: 40px auto 40px auto;
+    }
+    
+    
+
+    .orderInfo{
+        display:flex;
+        max-width: 1000px;
+        margin: 0 auto 40px auto;
+        position: relative;
+       
+        img{
+            margin-right: 22px;
+            height: auto;
+        }
+        .orderInfoTxt{
+            h3{
+                padding: 5px 0;
+                margin-bottom: 25px;
+                color:$primary-color;
+                font-weight: bold;
+            }
+            p{
+                margin-bottom: 15px;
+            }
+            p:last-child{
+                margin-bottom: 0;
+            }
+        }
+      
+    }
+
+    .orderContact{
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 0;
+        p{
+            margin-bottom: 15px;
+        }
+    }
+
+   
+}
+
+@media(max-width:992px){
+    .order{
+        .orderContainer{
+        
+            margin:0px 10px 40px 10px;
+        }
+
+        .orderInfo{
+            margin-right: 0;
+        }
+    }
+}
+
+@media(max-width:520px){
+        
+    .order{
+
+        h2{
+            max-width: 1000px;
+            margin: 0 auto 35px auto;
+        }
+
+        .orderInfo{
+            flex-direction: column;
+            margin-bottom: 30px;
+            img{
+                width: 100%;
+                margin-bottom: 30px;
+            }
+            .bookingInfoTxt{
+                margin-bottom: 5px;
+            }
+        }
+    }
+}
+
+

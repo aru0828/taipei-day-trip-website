@@ -3,7 +3,6 @@ let nextPage = null;
 let ApiDone = true;
 let searchBtn = document.querySelector('#searchBtn');
 
-// import checkSignin from "./checkSignin.js";
 import { checkSignin } from './checkSignin.js';
 
 // model

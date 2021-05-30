@@ -1,0 +1,37 @@
+{% extends "base.html"%}
+{% block css %}
+<link rel="stylesheet" href="../static/css/member.css">
+{% endblock%}
+
+{% block main %}
+<div class="order container">
+    
+    
+    <div class="orderTableContainer">
+        <table class="orderTable flat-table">
+            <thead>
+                <th>訂單編號</th>
+                <th>景點名稱</th>
+                <th>導覽日期</th>
+                <th>導覽時間</th>
+                <th>訂單成立時間</th>
+                <th>費用( 元 )</th>
+                <th>付款狀態</th>
+            </thead>
+            <tbody>
+               
+            </tbody>
+      
+        </table>
+    </div>
+    
+</div>
+
+{% endblock%}
+
+
+{% block javascript %}
+<script type="module" src="../static/js/memberFunction.js"></script>
+<script src="../static/js/member.js"></script>
+<script type="module" src="../static/js/navbar.js"></script>
+{% endblock%}

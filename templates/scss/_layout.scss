@@ -17,8 +17,11 @@
      }
      .navbarList{
          display: flex;
-         li:first-child{
+         li{
              margin-right: 10px;
+         }
+         li:last-child{
+             margin-right: 0;
          }
          a{
              text-decoration: none;
