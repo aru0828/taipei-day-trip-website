@@ -118,6 +118,30 @@ table {
   padding: 45px 0px;
 }
 
+/*effect-underline*/
+.navbarList a {
+  position: relative;
+}
+
+.navbarList a:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  border-bottom: 1px solid;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.35s, transform 0.35s;
+  transform: scale(0, 1);
+}
+
+.navbarList a:hover:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
 .modal {
   position: fixed;
   z-index: 99;
@@ -221,6 +245,7 @@ table {
 body {
   font-family: Noto Sans TC;
   font-style: normal;
+  position: relative;
 }
 
 .container {
@@ -236,7 +261,81 @@ body {
   margin-bottom: 15px;
 }
 
+*.danger {
+  color: #d9534f;
+}
+
+*.success {
+  color: #5cb85c;
+}
+
+.loading {
+  display: none;
+}
+
+.loading.active {
+  display: flex;
+  justify-content: center;
+}
+
+.spinner {
+  animation: rotator 1.4s linear infinite;
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@keyframes colors {
+  0% {
+    stroke: #4285F4;
+  }
+  25% {
+    stroke: #DE3E35;
+  }
+  50% {
+    stroke: #F7C223;
+  }
+  75% {
+    stroke: #1B9A59;
+  }
+  100% {
+    stroke: #4285F4;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    transform: rotate(450deg);
+  }
+}
+
+.attraction.active {
+  display: block;
+}
+
 .attraction {
+  display: none;
   margin-bottom: 120px;
 }
 
@@ -388,7 +487,7 @@ body {
   border: 2px solid white;
 }
 
-.attraction .main .order .orderForm .orderFormSubmit {
+.attraction .main .order .orderForm .addBookingSubmit {
   font-size: 19px;
   border: 0;
   margin-top: 15px;
@@ -396,6 +495,11 @@ body {
   padding: 7px 20px;
   color: white;
   background: #448899;
+  cursor: pointer;
+}
+
+.attraction .main .order .orderForm .addBookingSubmit:hover {
+  background: #4793a6;
 }
 
 .attraction .content {

@@ -6,7 +6,15 @@
     {% endblock%}
 
     {%  block main%}
-    <div class="attraction container">
+
+    <div class="loading">
+        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+         </svg>
+    </div>
+
+
+    <div class="attraction container active">
         <div class="main">
             <div class="carouselContainer">
                <a href="javascript:;" class="prev" ></a> 
@@ -37,7 +45,7 @@
                         <label class="ft-bold" for="cost">導覽費用：</label>
                         <span class="cost">新台幣 2000 元</span>
                     </div>
-                    <button class="orderFormSubmit" type="submit">開始預訂行程</button>
+                    <button class="addBookingSubmit" type="submit">開始預訂行程</button>
                 </form>
             </div>         
         </div>

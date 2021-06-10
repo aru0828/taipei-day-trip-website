@@ -3,21 +3,21 @@ export function checkSignin() {
 
     // return promise讓呼叫時可利用then獲得data資料
     return fetch(api, {
-        method: 'GET'
-    })
-    .then(response => response.json())
-    .then(data => {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
 
-        if (data.data) {
-            let signoutBtn = document.querySelector('.signoutBtn');
-            let historyOrderBtn = document.querySelector('.historyOrderBtn');
-            historyOrderBtn.classList.add('active')
-            signoutBtn.classList.add('active');
-        }
-        else {
-            let signinBtn = document.querySelector('.signinBtn');
-            signinBtn.classList.add('active');
-        }
-        return data;
-    })
+                if (data.data) {
+                    let signoutBtn = document.querySelector('.signoutBtn');
+                    let historyOrderBtn = document.querySelector('.historyOrderBtn');
+                    historyOrderBtn.classList.add('active')
+                    signoutBtn.classList.add('active');
+                }
+                else {
+                    let signinBtn = document.querySelector('.signinBtn');
+                    signinBtn.classList.add('active');
+                }
+                return data;
+            })
 }

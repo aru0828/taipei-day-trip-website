@@ -2,10 +2,12 @@ from flask import Blueprint, request, jsonify, session
 import requests
 import json
 import datetime;
-
+import os
+from dotenv import load_dotenv
 
 from pool import connection_pool, closeConnect
 
+load_dotenv()
 orderAPI = Blueprint('order', __name__)
 
 @orderAPI.route('/api/order', methods=["GET"])
@@ -88,6 +90,17 @@ def orders():
             
             frontEndData = request.get_json()
             timestamp = int(datetime.datetime.now().timestamp())
+            
+            phone = frontEndData["order"]["contact"]["phone"]
+            name = frontEndData["order"]["contact"]["name"]
+            email = frontEndData["order"]["contact"]["email"]
+            
+           
+            if not phone or not name or not email:
+                return jsonify({
+                        "error": True,
+                        "message": "聯絡資訊不完全，付費流程失敗"
+                    }), 400
             # 新增order 
             try:         
                 sql = f"""
@@ -95,9 +108,9 @@ def orders():
                         user_id = {user["id"]},
                         attraction_id = {frontEndData["order"]["trip"]["attraction"]["id"]},
 
-                        phone = '{frontEndData["order"]["contact"]["phone"]}',
-                        name  = '{frontEndData["order"]["contact"]["name"]}',
-                        email = '{frontEndData["order"]["contact"]["email"]}',
+                        phone = '{phone}',
+                        name  = '{name}',
+                        email = '{email}',
 
                         number ='{timestamp}',
                         date = '{frontEndData["order"]["trip"]["date"]}',
@@ -112,7 +125,7 @@ def orders():
                         "error": True,
                         "message": "建立訂單失敗"
                     }), 400
-        
+
             #付款      
             try:
                 url = 'https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime'
@@ -122,7 +135,7 @@ def orders():
                 }
                 values ={
                     "prime": frontEndData["prime"],
-                    "partner_key": 'partner_DjKyVCcmswmRao7HqsuTJG8ptWeq8ichqSEJJElaDMTwlFRNLe7CgtiV',
+                    "partner_key": os.getenv("TAPPAY_PARTNER_KEY"),
                     "merchant_id": "aru0828_CTBC",
                     "details":"TapPay Test",
                     "amount": frontEndData["order"]["price"],
@@ -136,7 +149,7 @@ def orders():
                 requestData = json.dumps(values)
                 response = requests.post(url, data = requestData, headers = requestHeaders)
                 result = response.json()
-            
+    
                 if not result["status"]:
                     updatePayStatus =   f"UPDATE orders SET orders.status = 0 WHERE orders.number = {timestamp}"
                     mycursor.execute(updatePayStatus)

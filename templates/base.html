@@ -46,8 +46,8 @@
         <form  class="loginForm" method="PATCH"> 
             <span class="closeModalBtn" onclick=closeModal()></span>
             <h2 class="loginTitle">登入會員帳號</h2>
-            <input type="text" placeholder="輸入電子信箱" name="email" required>
-            <input type="password" placeholder="輸入密碼" name="password" required >
+            <input type="email" placeholder="輸入電子信箱" name="email" required>
+            <input type="password" placeholder="輸入密碼" name="password" required minlength="6" maxlength="16">
             <button type="submit" class="loginBtn submitBtn">登入帳戶</button>
             <h3 class="formMsg"></h3>
             <a href="javascript:;" onclick="openModal('register')">還沒有帳戶？點此註冊</a>
@@ -59,8 +59,8 @@
             <span class="closeModalBtn" onclick=closeModal()></span>
             <h2 class="registerTitle">註冊會員帳號</h2>
             <input type="text" placeholder="輸入姓名" name="name" required minlength="3">
-            <input type="text" placeholder="輸入電子信箱" name="email" required>
-            <input type="password" placeholder="輸入密碼" name="password" required minlength="6">
+            <input type="email" placeholder="輸入電子信箱" name="email" required>
+            <input type="password" placeholder="輸入密碼" name="password" required minlength="6" maxlength="16">
             <button type="submit" class="registerBtn submitBtn">註冊帳戶</button>
             <h3 class="formMsg"></h3>
             <a href="javascript:;" onclick="openModal('login')">已經有帳戶了？點此登入</a>
