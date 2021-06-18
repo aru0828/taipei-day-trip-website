@@ -1,5 +1,5 @@
 from flask import  request, Blueprint, jsonify, session
-
+import datetime;
 from pool import connection_pool, closeConnect
 # import mysql.connector
 
@@ -64,33 +64,45 @@ def booking():
                     }), 200
             # 新增booking資料
             elif request.method == 'POST':
-                sql = f"SELECT * FROM bookings WHERE user_id = {user['id']}"
-                mycursor.execute(sql)
-                result = mycursor.fetchone()
-
+                
                 getFrom = request.form.get
                 attractionId = getFrom('attractionId')
                 date = getFrom("date")
                 time = getFrom("time")
                 price = getFrom("price")
 
-                if result:
-                    sql = f"UPDATE bookings SET attraction_id = {attractionId}, date = '{date}', time = '{time}', price = {price} WHERE user_id = {user['id']}"
-                else:
-                    sql = f"INSERT INTO bookings set attraction_id = {attractionId}, user_id = {user['id']}, date = '{date}', time = '{time}', price = {price}"
-
-                # 回傳response
-                try:
+                # 驗證日期範圍為 今天起三個禮拜內且今天不可選
+                today = datetime.date.today()
+                dayEnd = today  + datetime.timedelta(days=21)
+                if(today < datetime.date.fromisoformat(date) <= dayEnd):
+                    
+                    sql = f"SELECT * FROM bookings WHERE user_id = {user['id']}"
                     mycursor.execute(sql)
-                    mydb.commit()
+                    result = mycursor.fetchone()
+
+                    if result:
+                        sql = f"UPDATE bookings SET attraction_id = {attractionId}, date = '{date}', time = '{time}', price = {price} WHERE user_id = {user['id']}"
+                    else:
+                        sql = f"INSERT INTO bookings set attraction_id = {attractionId}, user_id = {user['id']}, date = '{date}', time = '{time}', price = {price}"
+
+                    # 回傳response
+                    try:
+                        mycursor.execute(sql)
+                        mydb.commit()
+                        return jsonify({
+                            "ok": True
+                        }), 200   
+                    except:
+                        return jsonify({
+                            "error": True,
+                            "message": "建立失敗，輸入不正確或其他原因"
+                        }), 400
+                else:
                     return jsonify({
-                        "ok": True
-                    }), 200   
-                except:
-                    return jsonify({
-                        "error": True,
-                        "message": "建立失敗，輸入不正確或其他原因"
-                    }), 400
+                            "error": True,
+                            "message": "請依照規定選擇範圍內日期，今天起三個禮拜內且當天不可選"
+                        }), 400
+            
             # 刪除booking資料
             elif request.method == 'DELETE':
                 sql = f"DELETE FROM bookings WHERE user_id = {user['id']}"

@@ -1,79 +1,76 @@
 import { checkSignin } from "./checkSignin.js";
 
-
-let url = new URL(window.location.href)
-let qsNumber = url.searchParams.get("number")
-let orderData ={}
-
-function getOrder(){
-     return fetch(`/api/order?number=${qsNumber}`)
-    .then(response => response.json())
-    .then(result => {
-        if(!result.data){
-            location.href="/";
-        }
-        orderData = result;
-    })
-}
-
-function renderOrder(){
-    let time="";;
-    let status="";
-
-    orderData.data.trip.time === 'morning' ? time ='早上 9 點到下午 4 點' : time='下午 2 點到晚上 9 點';
-    orderData.data.status === 0 ? status = '已繳費' : '未繳費';
-    if(status="已繳費"){
-        document.querySelector('.orderStatus').classList.add('success');
-    }else{
-        document.querySelector('.orderStatus').classList.add('danger');
+let PorxyLoading = new Proxy({isLoading : 'open'}, {
+    set: function(obj, prop, value) {
+        document.querySelector('.loading').classList.toggle('active');
+        document.querySelector('.thankyou').classList.toggle('active');
+        return obj[prop] = value;
     }
-    document.querySelector('.InfoImg').setAttribute("src", `${orderData.data.trip.attraction.image}`);
-    document.querySelector('.orderNumber').textContent = `${orderData.data.number}`;
-    document.querySelector('.orderStatus').textContent = status;
-    document.querySelector('.orderName').textContent = `${orderData.data.trip.attraction.name}`;
-    document.querySelector('.orderDate').textContent = `${orderData.data.trip.date}`;
-    document.querySelector('.orderTime').textContent = time;
-    document.querySelector('.orderPrice').textContent = `新台幣 ${orderData.data.price} 元`;
-    document.querySelector('.orderAddress').textContent = `${orderData.data.trip.attraction.address}`;
-    document.querySelector('.orderContactName').textContent = `${orderData.data.contact.name}`;
-    document.querySelector('.orderEmail').textContent = `${orderData.data.contact.email}`;
-    document.querySelector('.orderPhone').textContent = `${orderData.data.contact.phone}`;
+  });
+
+let model = {
+    url : new URL(window.location.href),
+    orderData :{},
+    getOrder : function (){
+        let qsNumber = model.url.searchParams.get("number");
+        return fetch(`/api/order?number=${qsNumber}`)
+                .then(response => response.json())
+                .then(result => {
+                    model.orderData = result;
+                })
+   }
 }
 
-function init(){
-    checkSignin()
-    .then(result => {
-        if(!result.data){
-            window.location.href = "/"
+let view = {
+    renderOrder : function(){
+        let time="";
+        let status="";
+        let orderData = model.orderData.data;
+
+        orderData.trip.time === 'morning' ? time ='早上 9 點到下午 4 點' : time='下午 2 點到晚上 9 點';
+        orderData.status === 0 ? status = '已繳費' : status = '未繳費';
+        if(status==="已繳費"){
+            document.querySelector('.orderStatus').classList.add('success');
+        }else{
+            document.querySelector('.orderStatus').classList.add('danger');
         }
-        getOrder().then(response => {
-            renderOrder();
-        });
+        document.querySelector('.InfoImg').setAttribute("src", `${orderData.trip.attraction.image}`);
+        document.querySelector('.orderNumber').textContent = `${orderData.number}`;
+        document.querySelector('.orderStatus').textContent = status;
+        document.querySelector('.orderName').textContent = `${orderData.trip.attraction.name}`;
+        document.querySelector('.orderDate').textContent = `${orderData.trip.date}`;
+        document.querySelector('.orderTime').textContent = time;
+        document.querySelector('.orderPrice').textContent = `新台幣 ${orderData.price} 元`;
+        document.querySelector('.orderAddress').textContent = `${orderData.trip.attraction.address}`;
+        document.querySelector('.orderContactName').textContent = `${orderData.contact.name}`;
+        document.querySelector('.orderEmail').textContent = `${orderData.contact.email}`;
+        document.querySelector('.orderPhone').textContent = `${orderData.contact.phone}`;
+    },
 
-    });
+    redirectURL(url){
+        window.location.href = url;      
+    }
 }
 
-init();
+let controller = {
+    init: async function(){
+        PorxyLoading.isLoading = 'open';
+        let user = await checkSignin()
+        if(!user.data){
+            view.redirectURL('/');
+        }
+        else{
+            await model.getOrder();
+            if(model.orderData.data){
+                view.renderOrder();
+                PorxyLoading.isLoading = 'close';
+            }
+            else{
+                view.redirectURL('/');
+            }   
+        }
+    }
+}
 
-// let model = {
 
-// }
-
-// let view = {
-
-// }
-
-// let controller = {
-//     init: function(){
-//         checkSignin()
-//         .then(result => {
-//             if(!result.data){
-//                 window.location.href = "/"
-//             }
-//             getOrder().then(response => {
-//                 renderOrder();
-//             });
-    
-//         });
-//     }
-// }
+controller.init();

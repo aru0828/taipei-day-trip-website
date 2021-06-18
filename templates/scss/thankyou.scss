@@ -6,6 +6,12 @@
 @import "share";
 
 
+.thankyou{
+    display:none;
+}
+.thankyou.active{
+    display: block;
+}
 
 .thank{
     text-align: center;
