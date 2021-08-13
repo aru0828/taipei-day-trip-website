@@ -14,5 +14,7 @@ Infinite Scroll 功能
 
 資料庫結構  
 
+![image](https://user-images.githubusercontent.com/51038430/129355077-308f2484-ce3a-4816-b950-8f414903610b.png)
+
 
 
