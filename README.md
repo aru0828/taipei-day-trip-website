@@ -5,8 +5,7 @@
 
 Web 應⽤框架 Python + Flask
 HTML/CSS 實現 RWD
-AJAX 串接政府 API 取得景點資
-料，存放到 MySQL
+AJAX 串接政府 API 取得景點資料，存放到 MySQL 中
 原⽣ HTML, CSS, JS 實現圖片輪播功能
 Infinite Scroll 功能
 專案 API 設計採用 RESTful API 規範
