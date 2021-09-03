@@ -26,15 +26,31 @@ let view = {
         let time="";
         let status="";
         let orderData = model.orderData.data;
+        
+        console.log(orderData)
+        let refundBtn = document.querySelector('.refundBtn');
+        refundBtn.dataset.tradeid=orderData.recTradeId;
+     
+
 
         orderData.trip.time === 'morning' ? time ='早上 9 點到下午 4 點' : time='下午 2 點到晚上 9 點';
-        orderData.status === 0 ? status = '已繳費' : status = '未繳費';
-        if(status==="已繳費"){
-            document.querySelector('.orderStatus').classList.add('success');
-        }else{
-            document.querySelector('.orderStatus').classList.add('danger');
+        switch(orderData.status){
+            case (0):
+                status='已繳費';
+                document.querySelector('.orderStatus').classList.add('success');
+                break;
+            case (1):
+                status='未繳費';
+                document.querySelector('.orderStatus').classList.add('danger');
+                break;
+            case (3):
+                status='已退款';
+                refundBtn.remove()
+                break;
         }
-        document.querySelector('.InfoImg').setAttribute("src", `${orderData.trip.attraction.image}`);
+            
+     
+        document.querySelector('.InfoImg').setAttribute("src", `${orderData.trip.attraction.image.replace('http:', 'https:')}`);
         document.querySelector('.orderNumber').textContent = `${orderData.number}`;
         document.querySelector('.orderStatus').textContent = status;
         document.querySelector('.orderName').textContent = `${orderData.trip.attraction.name}`;

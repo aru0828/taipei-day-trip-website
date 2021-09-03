@@ -104,7 +104,7 @@ let view = {
 
     // 當booking有資料
     if (booking) {
-      document.querySelector('.InfoImg').setAttribute('src', booking.attraction.image);
+      document.querySelector('.InfoImg').setAttribute('src', booking.attraction.image.replace('http:', 'https:'));
       document.querySelector('.InfoName').appendChild(document.createTextNode(booking.attraction.name));
       document.querySelector('.InfoDate').appendChild(document.createTextNode(booking.date));
       document.querySelector('.InfoTime').appendChild(document.createTextNode(booking.time === 'morning' ? '早上 9 點到下午 4 點' : "下午 2 點到晚上 9 點"));

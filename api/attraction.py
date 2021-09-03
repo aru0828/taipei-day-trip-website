@@ -1,6 +1,9 @@
 from flask import Blueprint, request, jsonify
 from pool import connection_pool, closeConnect
 
+
+
+
 attractionAPI = Blueprint('attractionAPI', __name__)
 
 
@@ -21,9 +24,9 @@ def getAttractions():
 					"data": None
 				}
 			
-
+			
 			try:
-			#取得資料長度 
+				#取得資料長度 	
 				dataLen = 0
 				if(not qsKeyword):
 					mycursor.execute("SELECT count(*) FROM attractions")
@@ -73,6 +76,7 @@ def getAttractions():
 					responseData['nextPage'] = int(qsPage)+1
 
 				responseData['data'] = data	
+
 				return jsonify(responseData), 200
 			except:
 

@@ -32,6 +32,7 @@ let view = {
             let orderTime = document.createElement('td');
             let price =  document.createElement('td');
             let status =  document.createElement('td');
+           
     
             let a =       document.createElement('a');
     
@@ -56,13 +57,21 @@ let view = {
             orderTime.textContent = timevalue;
             price.textContent = `$ ${order.price}`;
             price.classList.add('orderPrice')
-            status.textContent = order.status === 0 ?  '已繳費' : '未繳費';
-            if(status.textContent="已繳費"){
-                status.classList.add('success');
-            }else{
-                status.classList.add('danger');
+
+            switch(order.status){
+                case (0):
+                    status.textContent='已繳費';
+                    status.classList.add('success');
+                    break;
+                case (1):
+                    status.textContent='未繳費';
+                    status.classList.add('danger');
+                    break;
+                case (3):
+                    status.textContent='已退款';
+                    break;
             }
-    
+         
             tr.appendChild(number);
             tr.appendChild(name);
             tr.appendChild(date);
@@ -70,6 +79,7 @@ let view = {
             tr.appendChild(orderTime);
             tr.appendChild(price);
             tr.appendChild(status);
+           
             frag.appendChild(tr);
         })
         orderTable.appendChild(frag);

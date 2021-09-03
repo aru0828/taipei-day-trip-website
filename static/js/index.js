@@ -67,8 +67,8 @@ let view = {
     let category = document.createElement('p');
     let categoryText = document.createTextNode(attraction.category)
     let title = document.createTextNode(attraction.name)
-    
-    img.setAttribute('src', attraction.images[0]);
+    img.setAttribute('src', attraction.images[0].replace('http:', 'https:'));
+    // img.setAttribute('src', attraction.images[0]);
     // 
     imgContainer.appendChild(img);
     h3.appendChild(title);

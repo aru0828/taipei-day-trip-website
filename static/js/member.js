@@ -3,6 +3,7 @@ let modal = null;
 let modalBG = document.querySelector('.modalBG');
 
 
+
 function openModal(mode = 'login') {
     modal = mode;
     let currentModal = document.getElementsByClassName('modal active');

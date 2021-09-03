@@ -112,7 +112,7 @@ let view = {
             let carousel = document.createElement('div');
             let dot = document.createElement('span');
             carousel.classList.add('carousel');
-            img.setAttribute('src', imgUrl);
+            img.setAttribute('src', imgUrl.replace('http:', 'https:'));
             carousel.appendChild(img);
             dot.classList.add('dot');
             // 預設第一個元素為active

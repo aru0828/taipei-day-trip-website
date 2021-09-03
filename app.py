@@ -7,7 +7,11 @@ from api.order import orderAPI
 from api.member import memberAPI
 from dotenv import load_dotenv
 import os
+
 load_dotenv()
+
+
+
 
 # #將sql指令取得的資料 由tuple改成dict
 # mycursor = mydb.cursor(dictionary=True)
@@ -45,5 +49,6 @@ def memberOrder():
 
 app.run(host=os.getenv("HOST"), port=os.getenv("PORT"))
 #host="0.0.0.0", 
+
 
 
