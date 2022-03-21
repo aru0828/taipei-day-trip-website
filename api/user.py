@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify, redirect, url_for, session
+# 正則表達式套件
 import re
 from pool import connection_pool, closeConnect
 

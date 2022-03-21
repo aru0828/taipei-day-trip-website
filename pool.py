@@ -14,6 +14,7 @@ connection_pool = pooling.MySQLConnectionPool(pool_name="trip_pool",
                                                   database=os.getenv("SQL_DATABASE"),
                                                   user=os.getenv("SQL_USER"),
                                                   password=os.getenv("SQL_PASSWORD"))
+
 def closeConnect(mydb, mycursor):
     if mydb.is_connected():
         mycursor.close()

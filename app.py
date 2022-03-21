@@ -21,8 +21,10 @@ app.register_blueprint(userAPI)
 app.register_blueprint(bookingAPI)
 app.register_blueprint(orderAPI)
 app.register_blueprint(memberAPI)
-app.config["JSON_AS_ASCII"]=False
+# app.config["JSON_AS_ASCII"]=False
+# 修改模板時自動載入
 app.config["TEMPLATES_AUTO_RELOAD"]=True
+# 不要排序資料 
 app.config["JSON_SORT_KEYS"] = False
 app.config['SECRET_KEY'] = os.urandom(24)
 

@@ -498,6 +498,9 @@ body {
   .main .mainList li {
     width: 100%;
   }
+  .main .mainList li:hover img {
+    transform: scale(1);
+  }
 }
 
 .mainList li {

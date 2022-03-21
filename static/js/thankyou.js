@@ -42,10 +42,11 @@ let view = {
             case (1):
                 status='未繳費';
                 document.querySelector('.orderStatus').classList.add('danger');
+                refundBtn.remove();
                 break;
             case (3):
                 status='已退款';
-                refundBtn.remove()
+                refundBtn.remove();
                 break;
         }
             

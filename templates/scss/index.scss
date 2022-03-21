@@ -179,6 +179,9 @@
             li{
                 width: 100%;
             }
+            li:hover img{
+                transform: scale(1);
+            }
         }
     }
 }
